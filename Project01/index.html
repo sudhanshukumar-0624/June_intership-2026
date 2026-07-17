@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="style.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <header>
@@ -15,9 +16,9 @@
             <h4>& Engineering</h4>
             </div>
             <div class="nav">
-                <a href="#">About</a>
-                <a href="#">Skills</a>
-                <a href="#">Projects</a>
+                <a href="#About">About</a>
+                <a href="#project">Projects</a>
+                <a href="#skill">Skill</a>
                 <a href="#">Experience</a>
                 <a href="#">Contact</a>
             </div>
@@ -26,9 +27,10 @@
     </header>
 
     <main>
+        <section id="About">
         <div class="hero">
             <h1>PORTFOLIO</h1>
-            <img src="img01.png" class="img">
+            <img src="img01.png" alt="Sudhanshu kumar" class="img">
             <div class="info">
                 <div>
                 <h3>Creative Engineer</h3>
@@ -44,31 +46,141 @@
                 </div>
             </div>
         </div>
-        <h3>Selected Projects</h3>
+        </section>
+
+        <section id="project" class="pro">
+            <h3>Selected Projects</h3>
         <div class="project">
             <div class="card">
-                <img src="https://images.pexels.com/photos/29445973/pexels-photo-29445973.jpeg" alt="">
+                <img src="https://images.pexels.com/photos/29445973/pexels-photo-29445973.jpeg" alt="project 1">
                 <div class="text">
-                <p><h6>Systems</h6><h4>DistribKV</h4> Raft-based key-value store with leader election and log replication across 5 nodes.</p>
+                <p><h5>Systems</h5><h4>DistribKV</h4> Raft-based key-value store with leader election and log replication across 5 nodes.</p>
                 <a href="#">View Project ></a>
                 </div>
 
             </div>
             <div class="card">
-                <img src="https://images.pexels.com/photos/39559/ipad-mockup-apple-business-39559.jpeg" alt="">
+                <img src="https://images.pexels.com/photos/39559/ipad-mockup-apple-business-39559.jpeg" alt="project 2">
                 <div class="text">
-                <p><h6>AI / Web</h6> <h4> NeuralNotes</h4> LLM-powered note app that auto-generates summaries, flashcards and quizzes from PDFs.</p>
+                <p><h5>AI / Web</h5> <h4> NeuralNotes</h4> LLM-powered note app that auto-generates summaries, flashcards and quizzes from PDFs.</p>
                 <a href="#">View Project ></a>
                 </div>
             </div>
             <div class="card">
-                <img src="https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg" alt="">
+                <img src="https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg" alt="project 3">
                 <div class="text">
-                <p><h6>Platform</h6><h4>CompileArena</h4>Online judge supporting 8 languages with sandboxed Docker execution and live leaderboards.</p>
+                <p><h5>Platform</h5><h4>CompileArena</h4>Online judge supporting 8 languages with sandboxed Docker execution and live leaderboards.</p>
                 <a href="#">View Project ></a>
                 </div>
             </div>
         </div>
+        </section>
+
+        <section id="skill">
+            <div class="box1">
+                <div class="box">
+                    <!-- =========== Left ============ -->
+                    <div class="left">
+                        <h3>S K I L L</h3>
+                            <div class="skill">
+                                <h2>Systems Programming</h2>
+                                     <p>C, Java, Dart </p>
+                            </div>    
+                            <div class="skill">
+                                <h2>Full-Stack Web</h2> 
+                                <p>React, Next.js, Node.js</p>
+                            </div> 
+                            <div class="skill">
+                                <h2>Database Systems </h2>
+                                <p>MongoDB, MySQL</p>
+                            </div> 
+                            <div class="skill">
+                                <h2>DevOps & Cloud</h2> 
+                                <p>Docker, AWS, CI/CD</p>
+                            </div> 
+                            <div class="skill">
+                                <h2>Algorithms & DS </h2>
+                                <p> 0 LeetCode problems</p>
+                            </div>         
+                    </div>
+                    
+                    <!-- =========== Center ============ -->
+                    <div class="center">
+                        <h3>TECH STACK</h3>
+                        <div class="grid">
+                            <div class="cards">
+                                <i class="fa-brands fa-python"></i>
+                                <samp>Python</samp>
+                            </div>
+                            <div class="cards">
+                                <i class="fa-brands fa-dart-lang"></i>
+                                <samp>Dart</samp>
+                            </div>
+                            <div class="cards">
+                                <i class="fa-brands fa-js"></i>
+                                <samp>Java script </samp>
+                            </div>
+                            <div class="cards">
+                                <i class="fa-brands fa-java"></i>
+                                <samp>Java</samp>
+                            </div>
+                            <div class="cards">
+                                <i class="fa-solid fa-c"></i>
+                                <samp>C</samp>
+                            </div>
+                            <div class="cards">
+                                <i class="fa-brands fa-react"></i>
+                                <samp>React</samp>
+                            </div>
+                        </div>
+                        <div class="education">
+                            <h3>EDUCATION</h3>
+                            <h2>B.Tech Computer Science</h2>
+                            <p>OP Jindal University Raighar · 2024-2028</p>
+                            <div class="cgpi">
+                                7.7
+                                <samp>/10 CGPI</samp>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- =========== Right ============ -->
+                    <div class="right">
+                        <h3>TESTIMONIALS ✦</h3>
+                        <div class="review">
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+                            <p>Arjun built our backend from scratch in two weeks.
+                                Incredibly fast, clean code, zero bugs in production.
+                            </p>
+                            <div class="profile">
+                                <i class="fa-solid fa-user"></i>
+                                <div>
+                                    <h4>Priya Sharma</h4>
+                                    <span>Founder, DevSpark</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review">
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+                            <p>One of the most technically sharp interns we've had.
+                                He shipped a latency improvement that took our senior team months.
+                            </p>
+                            <div class="profile">
+                                <i class="fa-solid fa-user"></i>
+                                <div>
+                                    <h4>Rahul Nair</h4>
+                                    <span>Engineering Manager, Stripe</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
     </main>
 
@@ -82,6 +194,5 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

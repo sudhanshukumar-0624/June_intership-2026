@@ -1,8 +1,7 @@
 *{
     box-sizing: border-box;
     padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
+    margin: 0;   
 }
 nav{
     display: flex;
@@ -11,40 +10,38 @@ nav{
     color:  #f0ebe0;
     border-bottom: 1px solid rgb(101, 90, 24);
     position:fixed ;
-    top: 0;
+    height:60px;
     width: 100%;
     z-index: 1000;
-    flex-wrap: wrap;
+    font-size: 22px;   
 }
 nav h5{
     padding-top: 15px;
-    padding-right: 35px;
+    padding-right: 35px;   
 }
 .logotxt{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start;   
 }
 .logotxt h3{
     font-size: 25px;
     padding-left: 20px;
 }
 .logotxt h4{
-     font-size: 15px;
-     padding-left: 35px;
+    font-size: 15px;
+    padding-left: 35px;
 }
-.nav{
-    gap: 40px;
-    padding-top: 15px;
-    
-   
+.nav{    
+    padding-top: 15px;       
 }
-.nav a{
-     color: #616161;
+a{
+    margin-right: 10px;
+    color: #616161;
+    text-decoration: none;    
 }
 main{
    background-color: #0f0f0f; 
-   flex-wrap: wrap;
 }
 .img{
     display: flex;
@@ -52,18 +49,16 @@ main{
     align-items: center; 
     height: 100vb;
     z-index: 5;
-    padding-left: 700px;
-    flex-wrap: wrap;
-        
-   
+    padding-left: 700px;  
+}
+.hero{
+    border-bottom: 1px solid rgb(101, 90, 24);
 }
 .hero h1{
     color: #c6a66c;
-    padding-left: 50px;
-    font-size: 300px;
-    z-index: 1;
-    flex-wrap: wrap;
-    
+    padding-left: 20px;
+    font-size: 279px;
+    z-index: 1;   
 }
 .hero h3{
     color: #c9a952;
@@ -72,8 +67,7 @@ main{
 }
 .hero p{
     color: #6b6b6b;
-    font-size: 20px;
-    
+    font-size: 20px;   
 }
 .info{
     padding-left: 20px;
@@ -87,6 +81,11 @@ main{
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
+.pro h3{
+    color: #c6a66c;
+    padding: 20px;
+    font-size: 25px;
+}
 .card{
     display: flex;
     flex-direction: column;
@@ -95,21 +94,21 @@ main{
     overflow: hidden;
 }
 .card img{
-     width: 100%;
+    width: 100%;
     height: 250px;
     object-fit: cover;
 }
 .text{
-     background-color: #0f0f0f; 
+    background-color: #0f0f0f; 
     padding: 10px;
     color:  #6b6b6b;
-    font-size: 100%; 
-     display: flex;
+    font-size: 25px; 
+    display: flex;
     flex-direction: column;
     flex: 1;
     padding: 20px;
 }
-.text h6{
+.text h5{
      color: #c9a952 ;
 }
 .text h4{
@@ -123,15 +122,135 @@ main{
     text-decoration: none;
     opacity: 0;
     visibility: hidden;
-    /* transform: translateY(5px); */
-    transition: 0.3s,0.3s,0.3s;
-    
+    transform: translateY(5px);
+    transition: 0.3s,0.3s,0.3s;   
 }
 .card:hover a{
     opacity: 1;
     visibility: visible;
-    /* transform: translateY(0); */
+    transform: translateY(0); 
+}
+.left{
+    padding: 40px;
+    height: 700px;
+    width: 500px;
+    border-right: 1px solid rgb(101, 90, 24);
+    
+}
+.left h3{
+    color: #c9a952;
+    height: 40px;
+}
+.skill{
+    padding: 15px;
+    color: #6b6b6b;
+    border-bottom: 1px solid rgb(101, 90, 24);
+}
+.skill h2{
+    color: #f9f9f8;
+    padding-bottom: 5px;
 }
 
-
-
+.center{
+    padding: 40px;
+    min-height: 700px;
+    border-right: 1px solid rgb(101, 90, 24);
+    
+}
+.center h3{
+    color: #c9a952;
+    height: 40px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-bottom:50px;
+}
+.cards{
+    border:1px solid rgb(101, 90, 24);
+    width:95px;
+    height:95px;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:.35s;
+}
+.cards i{
+    color: #f9f9f8;
+    font-size: 33px;
+    margin-bottom: 15px;
+}
+.cards samp{
+    color: #6b6b6b;
+    font-size: 15px;
+    letter-spacing: 3px;
+}
+.cards :hover{   
+    transform:translateY(-6px);
+}
+.cards :hover i{
+    transform:translateY(-6px);
+}
+.education{
+    border: 1px solid rgb(101, 90, 24);
+    padding:28px;
+    margin-top:60px;
+    color: #6b6b6b;
+    background: #222222;
+}
+.education h3{
+    color: #c9a952;
+    margin-bottom: 20px;
+}
+.education h2{
+    color: #f9f9f8;
+    margin-bottom: 20px;
+}
+.education p{
+    margin-bottom: 20px;
+}
+.cgpi{
+    font-size:30px;
+    color: #c9a952;
+    margin-bottom: 20px;
+}
+.cgpi samp{
+    font-size: 15px;
+}
+.right{
+    padding: 40px;
+    min-height: 700px;
+    color: #6b6b6b;
+    
+}
+.right h3{
+   color: #c9a952; 
+}
+.stars {
+    color: #c9a952;
+}
+.right h4{
+     color: #f9f9f8;
+}
+.review{
+    border-bottom: 1px solid rgb(101, 90, 24);
+}
+.profile{
+    padding: 10px;
+    display: flex;
+}
+.profile i{
+    color: #f0ebe0;
+    margin-top: 15px;
+    height: 30px;
+    width: 30px;
+}
+.box{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(101, 90, 24)a;
+    margin: 150px;
+}
