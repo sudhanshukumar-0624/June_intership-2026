@@ -1,0 +1,727 @@
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #0a0a0c;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   Background Image
+   ========================================================================== */
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.65) contrast(1.1) saturate(0.9);
+    transform: scale(1.02);
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 60% 30%, rgba(20, 20, 30, 0.2) 0%, rgba(10, 10, 15, 0.8) 80%);
+    z-index: -1;
+}
+
+
+/* ==========================================================================
+   Dashboard Container
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: 1240px;
+    height: 780px;
+    background: rgba(10, 10, 12, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+.sidebar {
+    width: 300px;
+    height: 100%;
+    background: rgba(12, 12, 16, 0.6);
+    backdrop-filter: blur(30px) saturate(180%);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 24px;
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ffffff 45%, rgba(255, 255, 255, 0.5));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-line {
+    width: 50px;
+    height: 1.5px;
+    background: linear-gradient(90deg, #00f2fe 0%, transparent 100%);
+    margin-top: 6px;
+}
+
+.section {
+    margin-bottom: 28px;
+}
+
+.label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 12px;
+}
+
+/* Status widget */
+.status {
+    background: rgba(20, 20, 25, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 14px;
+    position: relative;
+}
+
+.status-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.badge.danger {
+    background: rgba(255, 59, 48, 0.12);
+    border-color: rgba(255, 59, 48, 0.2);
+    color: #ff453a;
+}
+
+.badge-icon {
+    width: 12px;
+    height: 12px;
+}
+
+.chart {
+    height: 70px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.chart-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.tooltip {
+    position: absolute;
+    left: 100px;
+    transform: translate(-50%, -100%);
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.tooltip.danger {
+    background: #ff3b30;
+    color: #ffffff;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    background: inherit;
+}
+
+.more-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+.more-link:hover {
+    color: #ffffff;
+}
+
+/* Globe widget */
+.globe {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.globe img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7) contrast(1.15);
+}
+
+.globe-pin {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ff9900;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.35), 0 0 15px #ff9900;
+    animation: pinGlow 2s infinite ease-in-out;
+}
+
+@keyframes pinGlow {
+    0% { transform: scale(1); box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.35), 0 0 10px #ff9900; }
+    50% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(255, 153, 0, 0.15), 0 0 20px #ff9900; }
+    100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.35), 0 0 10px #ff9900; }
+}
+
+.gps-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+}
+
+.gps-btn:hover {
+    color: #ffffff;
+}
+
+.gps-btn i {
+    width: 14px;
+    height: 14px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(20, 20, 25, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-top: 12px;
+}
+
+.tag-icon {
+    color: rgba(255, 255, 255, 0.35);
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.tag-text {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
+.main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 35px;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pin-icon {
+    color: #ffffff;
+    width: 18px;
+    height: 18px;
+}
+
+.city {
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 300;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Search bar */
+.search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    width: 220px;
+    height: 38px;
+    padding: 0 4px 0 12px;
+}
+
+.search input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.82rem;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.681);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.search-btn i {
+    width: 14px;
+    height: 14px;
+}
+/* Middle weather block */
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Left main temp display */
+.temp {
+    display: flex;
+    flex-direction: column;
+}
+
+.temp-box {
+    display: flex;
+    align-items: flex-start;
+}
+
+.value {
+    font-size: 8.5rem;
+    font-weight: 200;
+    line-height: 0.95;
+    letter-spacing: -5px;
+    background: linear-gradient(180deg, #ffffff 60%, rgba(255, 255, 255, 0.55));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.unit {
+    font-size: 4.5rem;
+    font-weight: 200;
+    line-height: 1.1;
+    color: rgba(255, 255, 255, 0.7);
+    margin-left: -5px;
+}
+
+.chips {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.chip-lbl {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.chip-val {
+    color: #ffffff;
+}
+
+.condition {
+    font-size: 2.1rem;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 12px;
+}
+
+/* Right text info & History list */
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 300;
+    max-width: 380px;
+}
+
+.recent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.recent-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.clear-link {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+}
+
+.clear-link:hover {
+    color: #ffffff;
+}
+
+.recent-cards {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.recent-card {
+    flex: 1;
+    min-width: 140px;
+    background: rgba(20, 20, 25, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 10px 12px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recent-card:hover {
+    background: rgba(25, 25, 32, 0.5);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.recent-icon-wrap {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.recent-weather-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.recent-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.recent-city {
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recent-desc {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.35);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recent-temp {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================================
+   Weekly forecast graph elements
+   ========================================================================== */
+.weekly {
+    position: relative;
+    background: rgba(20, 20, 25, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 20px 16px;
+    overflow: visible;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.day:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.day-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.day-icon {
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 2px;
+}
+
+.day.active .day-name {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.day.active .day-icon {
+    color: #ffffff;
+}
+
+/* SVG Line Graph */
+.graph {
+    height: 100px;
+    position: relative;
+    margin-bottom: 15px;
+    z-index: 1;
+}
+
+.graph-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Temperatures aligning to bottom */
+.temps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.temp-val {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.65);
+    transition: all 0.2s ease;
+}
+
+.temp-val.active {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* SVG Nodes & Lines */
+.node {
+    fill: #141419;
+    stroke: rgba(255, 255, 255, 0.6);
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.node:hover {
+    r: 5.5;
+    stroke: #ffffff;
+}
+
+.node.active {
+    fill: #ffffff;
+    stroke: #ffffff;
+    stroke-width: 2.5;
+    r: 5.5;
+}
+
+.line {
+    stroke: rgba(255, 255, 255, 0.08);
+    stroke-width: 1;
+    stroke-dasharray: 4,4;
+    pointer-events: none;
+}
+.line.active {
+    stroke: rgba(255, 255, 255, 0.3);
+}

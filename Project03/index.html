@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="bg">
+        <img src="assets/weather_dashboard_bg.png" alt="Cloudy Background" class="bg-img">
+        <div class="bg-overlay"></div>
+    </div>
+
+
+    <!-- Main App Container -->
+    <main class="container">
+        
+        <!-- Sidebar Panel -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1 class="logo-text">WeatherWise</h1>
+                <div class="logo-line"></div>
+            </div>
+
+            <!-- Status Info -->
+            <div class="section">
+                <h2 class="label">Status</h2>
+                <div class="status">
+                    <div class="status-head">
+                        <div class="badge" id="aqi-badge">
+                            <i data-lucide="arrow-up-right" class="badge-icon"></i>
+                            <span id="aqi-text">AQI 1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chart">
+                        <svg class="chart-svg" viewBox="0 0 160 80">
+                            <!-- Simple Status Graph line -->
+                            <path class="chart-line-bg" d="M 10 70 Q 50 65, 80 40 T 150 15" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="3"/>
+                            <path class="chart-line" id="chart-curve" d="M 10 70 Q 50 65, 80 40 T 150 15" fill="none" stroke="#4facfe" stroke-width="3"/>
+                            <!-- Indicator node -->
+                            <circle id="chart-dot" cx="115" cy="27" r="4" fill="#ffffff" />
+                        </svg>
+
+                        <!-- Tooltip popup -->
+                        <div class="tooltip" id="chart-tooltip">
+                            <span id="tooltip-text">Optimal</span>
+                            <div class="tooltip-arrow"></div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="more-link" id="more-btn">
+                        <span>Details</span>
+                        <i data-lucide="chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Globe Widget -->
+            <div class="section">
+                <div class="status-head">
+                    <h2 class="label">Select Area</h2>
+                    <button id="gps-btn" class="gps-btn" title="My Location">
+                        <i data-lucide="navigation"></i>
+                    </button>
+                </div>
+
+                <div class="globe">
+                    <img id="globe-img" src="" alt="Globe view">
+                    <div class="globe-pin"></div>
+                </div>
+
+                <div class="tag">
+                    <i data-lucide="map-pin" class="tag-icon"></i>
+                    <span id="globe-location" class="tag-text">Brooklyn, New York, USA</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard content -->
+        <section class="main">
+            <!-- Header bar -->
+            <header class="header">
+                <div class="meta">
+                    <i data-lucide="map-pin" class="pin-icon"></i>
+                    <h2 class="city" id="city-name">Brooklyn, New York, USA</h2>
+                    <span class="date" id="date-label">(Friday, January 4)</span>
+                </div>
+
+                <div class="actions">
+                    <div class="search" id="search-box">
+                        <input type="text" id="search-input" placeholder="Search city...">
+                        <button id="search-btn" class="search-btn">
+                            <i data-lucide="search"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Weather summaries -->
+            <div class="content">
+                <div class="summary">
+                    <!-- Giant Temperatures -->
+                    <div class="temp">
+                        <div class="temp-box">
+                            <span class="value" id="temp-val">18</span>
+                            <span class="unit">°</span>
+                            <div class="chips">
+                                <div class="chip">
+                                    <span class="chip-lbl">H</span>
+                                    <span class="chip-val" id="high-temp">29°</span>
+                                </div>
+                                <div class="chip">
+                                    <span class="chip-lbl">L</span>
+                                    <span class="chip-val" id="low-temp">12°</span>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="condition" id="weather-desc">Stormy with partly cloudy</h3>
+                    </div>
+
+                    <!-- Side notes and History -->
+                    <div class="info">
+                        <p class="desc">
+                            With real time data and advanced technology, we provide reliable forecasts for any location around the world.
+                        </p>
+
+                        <div class="recent">
+                            <div class="recent-head">
+                                <h4 class="recent-title">Recently Searched</h4>
+                                <a href="#" class="clear-link" id="clear-btn">Clear</a>
+                            </div>
+                            <div class="recent-cards" id="recent-list">
+                                <!-- Filled by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Forecast graph -->
+                <div class="weekly">
+                    <div class="days" id="weekly-days">
+                        <!-- Filled by JS -->
+                    </div>
+                    
+                    <!-- Line Trend SVG -->
+                    <div class="graph">
+                        <svg class="graph-svg" id="weekly-svg" viewBox="0 0 800 120" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="glow-grad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="rgba(255, 255, 255, 0.25)" />
+                                    <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Shadow fill below line -->
+                            <path id="graph-fill" d="" fill="url(#glow-grad)" />
+                            <!-- Clean direct connector line segment -->
+                            <path id="graph-line" d="" fill="none" stroke="rgba(255, 255, 255, 0.7)" stroke-width="2" />
+                            <!-- Points and indicators render container -->
+                            <g id="graph-nodes"></g>
+                        </svg>
+                    </div>
+
+                    <!-- Temperature figures aligns below graph nodes -->
+                    <div class="temps" id="weekly-temps">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JS code -->
+    <script src="web.js"></script>
+</body>
+</html>
