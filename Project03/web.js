@@ -1,12 +1,11 @@
-// API configuration
+
 const API_KEY = "f8c8d774faca83124d2e44fde3be28ea";
 
 const recentKeyName = "recent_weather_searches";
 
-// Initial setup of Lucide icons
+
 lucide.createIcons();
 
-// Event listener for search action
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 
@@ -28,7 +27,7 @@ searchInput.addEventListener("keypress", (e) => {
     }
 });
 
-// Geolocate button action
+
 document.getElementById("gps-btn").addEventListener("click", () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -44,13 +43,10 @@ document.getElementById("gps-btn").addEventListener("click", () => {
     }
 });
 
-// Render recently searched cards
 renderRecents();
 
-// Start with Brooklyn weather
 getWeather("Brooklyn");
 
-// Fetch weather details for a city
 function getWeather(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`)
         .then(res => {
@@ -76,7 +72,6 @@ function getWeather(city) {
         });
 }
 
-// Fetch weather details by Geocoordinates
 function getWeatherByCoords(lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
         .then(res => {
@@ -91,7 +86,6 @@ function getWeatherByCoords(lat, lon) {
         });
 }
 
-// Update DOM elements using API data
 function updateDashboard(weather, forecast, aqi) {
     const utc = Date.now() + new Date().getTimezoneOffset() * 60000;
     const local = new Date(utc + weather.timezone * 1000);
@@ -124,8 +118,8 @@ function updateDashboard(weather, forecast, aqi) {
                 high: Math.round(f.main.temp_max),
                 low: Math.round(f.main.temp_min),
                 desc: f.weather[0].description,
-                owmIcon: f.weather[0].icon,          // raw OWM code for bg + desc
-                icon: mapIcon(f.weather[0].icon)      // lucide name for graph
+                owmIcon: f.weather[0].icon,         
+                icon: mapIcon(f.weather[0].icon)      
             };
         });
     }
@@ -138,18 +132,18 @@ function updateDashboard(weather, forecast, aqi) {
     updateGlobe(weather.coord.lat, weather.coord.lon);
 }
 
-// Change background image based on OWM weather icon code
+
 function updateBackground(icon) {
     const bgMap = {
-        "01": "assets/bg_sunny.png",   // clear sky
-        "02": "assets/weather_dashboard_bg.png",  // few clouds
-        "03": "assets/weather_dashboard_bg.png",  // scattered clouds
-        "04": "assets/weather_dashboard_bg.png",  // broken/overcast clouds
-        "09": "assets/bg_cloudy.png",   // shower rain / drizzle
-        "10": "assets/bg_cloudy.png",   // rain
-        "11": "assets/bg_stormy.png",  // thunderstorm
-        "13": "assets/bg_snowy.png",   // snow
-        "50": "assets/weather_dashboard_bg.png"   // mist / fog
+        "01": "assets/bg_sunny.png",  
+        "02": "assets/weather_dashboard_bg.png",  
+        "03": "assets/weather_dashboard_bg.png",  
+        "04": "assets/weather_dashboard_bg.png",  
+        "09": "assets/bg_cloudy.png",   
+        "10": "assets/bg_cloudy.png",   
+        "11": "assets/bg_stormy.png",  
+        "13": "assets/bg_snowy.png",   
+        "50": "assets/weather_dashboard_bg.png"  
     };
 
     const code = icon ? icon.slice(0, 2) : "01";
@@ -158,11 +152,10 @@ function updateBackground(icon) {
     const bgImg = document.querySelector(".bg-img");
     if (!bgImg) return;
 
-    // Track active bg via data attribute to avoid URL comparison issues
+   
     if (bgImg.dataset.currentBg === newSrc) return;
     bgImg.dataset.currentBg = newSrc;
 
-    // Fade out → swap → fade in
     bgImg.style.transition = "opacity 0.8s ease";
     bgImg.style.opacity = "0";
     setTimeout(() => {
@@ -172,10 +165,10 @@ function updateBackground(icon) {
     }, 400);
 }
 
-// Generate placeholder weekly data when forecast isn't available
+
 function createMockWeekly(base, baseOwmIcon) {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-    // Pairs of [lucide name, owm-like prefix] so bg can still update on day click
+    
     const options = [
         { icon: "sun",              owmIcon: "01d", desc: "Clear sky" },
         { icon: "cloud",            owmIcon: "04d", desc: "Overcast clouds" },
@@ -200,7 +193,7 @@ function createMockWeekly(base, baseOwmIcon) {
     });
 }
 
-// Convert OWM icon code to Lucide equivalent
+
 function mapIcon(icon) {
     if (!icon) return "cloud";
     if (icon.startsWith("01")) return "sun";
@@ -212,7 +205,7 @@ function mapIcon(icon) {
     return "cloud";
 }
 
-// Update status chart details (AQI indicator)
+
 function updateAqiChart(aqi) {
     const positions = {
         1: { x: 25, y: 68, text: "Optimal", isDanger: false },
@@ -235,14 +228,12 @@ function updateAqiChart(aqi) {
     aqiSpan.textContent = `AQI Level ${aqi}`;
     tooltipText.textContent = pos.text;
 
-    // Use the dot's actual rendered position for pixel-perfect placement
     const chartEl = document.querySelector(".chart");
     const dot = document.getElementById("chart-dot");
     const chartRect = chartEl.getBoundingClientRect();
     const dotRect = dot.getBoundingClientRect();
 
-    // Center tooltip horizontally on the dot, position top at the dot's top edge
-    // transform: translate(-50%, -100%) then pulls the tooltip body fully above the dot
+   
     const leftPx = dotRect.left - chartRect.left + dotRect.width / 2;
     const topPx = dotRect.top - chartRect.top;
     tooltip.style.left = `${leftPx}px`;
@@ -257,7 +248,7 @@ function updateAqiChart(aqi) {
     }
 }
 
-// Draw weekly temperatures connected with segment lines
+
 function renderWeeklyGraph(weekly) {
     const daysList = document.getElementById("weekly-days");
     const tempsRow = document.getElementById("weekly-temps");
@@ -307,7 +298,7 @@ function renderWeeklyGraph(weekly) {
             document.getElementById(`node-${index}`).classList.add("active");
             document.getElementById(`line-${index}`).classList.add("active");
 
-            // Update main display + background for the selected day
+      
             document.getElementById("temp-val").textContent = item.temp;
             if (item.high) document.getElementById("high-temp").textContent = `${item.high}°`;
             if (item.low)  document.getElementById("low-temp").textContent  = `${item.low}°`;
@@ -355,7 +346,7 @@ function renderWeeklyGraph(weekly) {
     lucide.createIcons();
 }
 
-// Satellite Image Globe Update
+
 function updateGlobe(lat, lon) {
     const globeImg = document.getElementById("globe-img");
     if (globeImg) {
@@ -363,7 +354,7 @@ function updateGlobe(lat, lon) {
     }
 }
 
-// Local Search History (LocalStorage)
+
 function getRecents() {
     try {
         return JSON.parse(localStorage.getItem(recentKeyName)) || [];
