@@ -1,5 +1,5 @@
 
-const API_KEY = "f8c8d774faca83124d2e44fde3be28ea";
+const API_KEY = " Use Your API Key ";
 
 const recentKeyName = "recent_weather_searches";
 
