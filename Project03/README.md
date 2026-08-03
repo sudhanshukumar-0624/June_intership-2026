@@ -1,6 +1,6 @@
 # 🌤️ Project 03 — WeatherWise Dashboard
 
-A beautiful, real-time weather dashboard called **WeatherWise** that fetches live weather data using the OpenWeatherMap API. Features city search, GPS-based auto-detection, AQI status, hourly/weekly forecasts, and a glassmorphism UI. Built with HTML, CSS, and JavaScript during a web development internship at UNLOX.
+A beautiful, real-time weather dashboard called **WeatherWise** that fetches live weather data using the OpenWeatherMap API. Features city search, GPS-based auto-detection, AQI status, hourly/weekly forecasts, and a glassmorphism UI. Built with HTML, CSS, & JavaScript during a web development internship at UNLOX.
 
 ---
 
