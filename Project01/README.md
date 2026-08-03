@@ -8,7 +8,7 @@ A clean, modern personal portfolio website for **Sudhanshu Kumar**, a Computer S
 
 🔗 **Deployed URL:** [https://sudhanshu-portfolio-0624.netlify.app](https://sudhanshu-portfolio-0624.netlify.app)
 
-Or open `index.html` directly in any browser — no server required.
+Or open `index.html` directly in any browser.
 
 ---
 
@@ -25,14 +25,14 @@ Project01/
 
 ## ✨ Features
 
-- **Hero / About Section** — Full-screen intro with name, role, and university
-- **Selected Projects Section** — Showcase cards for featured projects (DistribKV, NeuralNotes, CompileArena)
-- **Skills Section** — Tech stack grid (Python, JavaScript, Java, React, C, Dart)
-- **Education Block** — B.Tech details with CGPI score
-- **Testimonials** — Client/mentor review cards
-- **Experience Timeline** — Internship history (UNLOX, Navodita Infotech)
-- **Contact Form** — Name, email, subject, message fields + CV download button
-- **Footer** — Social media links (LinkedIn, GitHub, Instagram)
+- **Hero / About Section** — Full-screen intro with name, role, and university.
+- **Selected Projects Section** — Showcase cards for featured projects (DistribKV, NeuralNotes, CompileArena).
+- **Skills Section** — Tech stack grid (Python, JavaScript, Java, React, C, Dart).
+- **Education Block** — B.Tech details with CGPI score.
+- **Testimonials** — Client/mentor review cards.
+- **Experience Timeline** — Internship history (UNLOX, Navodita Infotech).
+- **Contact Form** — Name, email, subject, message fields + CV download button.
+- **Footer** — Social media links (LinkedIn, GitHub, Instagram).
 
 ---
 
