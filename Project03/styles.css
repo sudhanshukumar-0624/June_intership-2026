@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Base Styles
-   ========================================================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -20,7 +18,7 @@ body {
     padding: 20px;
 }
 
-/* Scrollbar */
+
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -36,9 +34,6 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* ==========================================================================
-   Background Image
-   ========================================================================== */
 .bg {
     position: fixed;
     top: 0;
@@ -67,10 +62,6 @@ body {
     z-index: -1;
 }
 
-
-/* ==========================================================================
-   Dashboard Container
-   ========================================================================== */
 .container {
     width: 100%;
     max-width: 1240px;
@@ -85,9 +76,6 @@ body {
     position: relative;
 }
 
-/* ==========================================================================
-   Sidebar
-   ========================================================================== */
 .sidebar {
     width: 300px;
     height: 100%;
@@ -135,7 +123,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* Status widget */
 .status {
     background: rgba(20, 20, 25, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.06);
@@ -231,7 +218,7 @@ body {
     color: #ffffff;
 }
 
-/* Globe widget */
+
 .globe {
     position: relative;
     width: 100%;
@@ -311,9 +298,6 @@ body {
     text-overflow: ellipsis;
 }
 
-/* ==========================================================================
-   Main Content Layout
-   ========================================================================== */
 .main {
     flex-grow: 1;
     display: flex;
@@ -419,7 +403,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Left main temp display */
 .temp {
     display: flex;
     flex-direction: column;
@@ -485,7 +468,6 @@ body {
     margin-top: 12px;
 }
 
-/* Right text info & History list */
 .info {
     display: flex;
     flex-direction: column;
@@ -601,9 +583,7 @@ body {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* ==========================================================================
-   Weekly forecast graph elements
-   ========================================================================== */
+
 .weekly {
     position: relative;
     background: rgba(20, 20, 25, 0.45);
@@ -659,7 +639,6 @@ body {
     color: #ffffff;
 }
 
-/* SVG Line Graph */
 .graph {
     height: 100px;
     position: relative;
@@ -673,7 +652,6 @@ body {
     overflow: visible;
 }
 
-/* Temperatures aligning to bottom */
 .temps {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -695,7 +673,6 @@ body {
     color: #ffffff;
 }
 
-/* SVG Nodes & Lines */
 .node {
     fill: #141419;
     stroke: rgba(255, 255, 255, 0.6);

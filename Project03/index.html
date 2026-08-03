@@ -4,33 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
-    <!-- Google Fonts: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Background Image -->
     <div class="bg">
         <img src="assets/weather_dashboard_bg.png" alt="Cloudy Background" class="bg-img">
         <div class="bg-overlay"></div>
     </div>
-
-
-    <!-- Main App Container -->
     <main class="container">
-        
-        <!-- Sidebar Panel -->
         <aside class="sidebar">
             <div class="logo">
                 <h1 class="logo-text">WeatherWise</h1>
                 <div class="logo-line"></div>
             </div>
-
-            <!-- Status Info -->
             <div class="section">
                 <h2 class="label">Status</h2>
                 <div class="status">
@@ -49,8 +39,6 @@
                             <!-- Indicator node -->
                             <circle id="chart-dot" cx="115" cy="27" r="4" fill="#ffffff" />
                         </svg>
-
-                        <!-- Tooltip popup -->
                         <div class="tooltip" id="chart-tooltip">
                             <span id="tooltip-text">Optimal</span>
                             <div class="tooltip-arrow"></div>
@@ -63,8 +51,6 @@
                     </a>
                 </div>
             </div>
-
-            <!-- Globe Widget -->
             <div class="section">
                 <div class="status-head">
                     <h2 class="label">Select Area</h2>
@@ -84,10 +70,8 @@
                 </div>
             </div>
         </aside>
-
-        <!-- Main Dashboard content -->
+        
         <section class="main">
-            <!-- Header bar -->
             <header class="header">
                 <div class="meta">
                     <i data-lucide="map-pin" class="pin-icon"></i>
@@ -105,10 +89,8 @@
                 </div>
             </header>
 
-            <!-- Weather summaries -->
             <div class="content">
                 <div class="summary">
-                    <!-- Giant Temperatures -->
                     <div class="temp">
                         <div class="temp-box">
                             <span class="value" id="temp-val">18</span>
@@ -127,7 +109,6 @@
                         <h3 class="condition" id="weather-desc">Stormy with partly cloudy</h3>
                     </div>
 
-                    <!-- Side notes and History -->
                     <div class="info">
                         <p class="desc">
                             With real time data and advanced technology, we provide reliable forecasts for any location around the world.
@@ -139,19 +120,19 @@
                                 <a href="#" class="clear-link" id="clear-btn">Clear</a>
                             </div>
                             <div class="recent-cards" id="recent-list">
-                                <!-- Filled by JS -->
+
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Weekly Forecast graph -->
+ 
                 <div class="weekly">
                     <div class="days" id="weekly-days">
-                        <!-- Filled by JS -->
+         
                     </div>
                     
-                    <!-- Line Trend SVG -->
+
                     <div class="graph">
                         <svg class="graph-svg" id="weekly-svg" viewBox="0 0 800 120" preserveAspectRatio="none">
                             <defs>
@@ -160,25 +141,21 @@
                                     <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
                                 </linearGradient>
                             </defs>
-                            <!-- Shadow fill below line -->
+
                             <path id="graph-fill" d="" fill="url(#glow-grad)" />
-                            <!-- Clean direct connector line segment -->
+
                             <path id="graph-line" d="" fill="none" stroke="rgba(255, 255, 255, 0.7)" stroke-width="2" />
-                            <!-- Points and indicators render container -->
+     
                             <g id="graph-nodes"></g>
                         </svg>
                     </div>
 
-                    <!-- Temperature figures aligns below graph nodes -->
                     <div class="temps" id="weekly-temps">
-                        <!-- Filled by JS -->
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- JS code -->
     <script src="web.js"></script>
 </body>
 </html>
