@@ -1,1 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moviestan – Discover Movies & TV Shows</title>
+    <meta name="description" content="Moviestan: Search, explore, and discover your favourite movies, TV shows and series powered by the OMDB API.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="loader-screen" id="loader-screen">
+        <div class="loader-inner">
+            <div class="loader-logo">MOVIESTAN</div>
+            <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo" id="logo-home-btn">
+            <span class="logo-m">M</span>OVIESTAN
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#" class="nav-link active" data-section="home" id="nav-home">Home</a></li>
+            <li><a href="#" class="nav-link" data-section="movies" id="nav-movies">Movies</a></li>
+            <li><a href="#" class="nav-link" data-section="tv" id="nav-tv">TV Shows</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="nav-icon-btn" id="search-toggle-btn" title="Search" aria-label="Open Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-wrap">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" placeholder="Search movies, shows, actors..." autocomplete="off" spellcheck="false">
+                <button class="search-clear" id="search-clear"><i class="fas fa-times"></i></button>
+            </div>
+            <button class="search-close-btn" id="search-close-btn">Close</button>
+        </div>
+        <div class="search-results-container" id="search-results-container">
+            <div class="search-hint" id="search-hint">
+                <i class="fas fa-film"></i>
+                <p>Start typing to search — instant suggestions appear!</p>
+            </div>
+            <div class="search-results-grid" id="search-results-grid"></div>
+        </div>
+    </div>
+
+    <section class="hero" id="hero-section">
+        <div class="hero-bg" id="hero-bg"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-inner">
+         
+            <div class="hero-content" id="hero-content">
+                <div class="hero-badge-wrap">
+                    <span class="hero-badge" id="hero-type-badge">Series</span>
+                    <span class="hero-badge genre-badge" id="hero-genre-badge">Drama</span>
+                </div>
+
+                <h1 class="hero-title" id="hero-title">Loading...</h1>
+                <p class="hero-meta" id="hero-meta"></p>
+
+                <div class="hero-stars" id="hero-stars"></div>
+
+                <div class="hero-genres" id="hero-genres"></div>
+
+                <div class="hero-actions">
+                    <button class="btn-play" id="hero-play-btn">
+                        <i class="fas fa-play"></i> Watch Trailer
+                    </button>
+                    <button class="btn-add" id="hero-add-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+
+                <p class="hero-plot" id="hero-plot"></p>
+            </div>
+
+            <div class="hero-poster-wrap">
+                <img src="" alt="" class="hero-img" id="hero-img">
+            </div>
+        </div>
+
+        <div class="hero-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <main class="main-content">
+
+        <section class="content-row" id="trending-row">
+            <div class="row-header">
+                <h2 class="row-title"><span class="accent-dot"></span> Trending Now</h2>
+                <button class="see-all-btn" data-row="trending">See All <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="cards-scroll-wrap">
+                <button class="scroll-arrow scroll-left" data-target="trending-cards"><i class="fas fa-chevron-left"></i></button>
+                <div class="cards-row" id="trending-cards"></div>
+                <button class="scroll-arrow scroll-right" data-target="trending-cards"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="content-row" id="movies-row">
+            <div class="row-header">
+                <h2 class="row-title"><span class="accent-dot"></span> Popular Movies</h2>
+                <button class="see-all-btn" data-row="movies">See All <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="cards-scroll-wrap">
+                <button class="scroll-arrow scroll-left" data-target="movies-cards"><i class="fas fa-chevron-left"></i></button>
+                <div class="cards-row" id="movies-cards"></div>
+                <button class="scroll-arrow scroll-right" data-target="movies-cards"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="content-row" id="tv-row">
+            <div class="row-header">
+                <h2 class="row-title"><span class="accent-dot"></span> Top TV Shows</h2>
+                <button class="see-all-btn" data-row="tv">See All <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="cards-scroll-wrap">
+                <button class="scroll-arrow scroll-left" data-target="tv-cards"><i class="fas fa-chevron-left"></i></button>
+                <div class="cards-row" id="tv-cards"></div>
+                <button class="scroll-arrow scroll-right" data-target="tv-cards"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="content-row" id="action-row">
+            <div class="row-header">
+                <h2 class="row-title"><span class="accent-dot"></span> Action &amp; Adventure</h2>
+                <button class="see-all-btn" data-row="action">See All <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="cards-scroll-wrap">
+                <button class="scroll-arrow scroll-left" data-target="action-cards"><i class="fas fa-chevron-left"></i></button>
+                <div class="cards-row" id="action-cards"></div>
+                <button class="scroll-arrow scroll-right" data-target="action-cards"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="content-row" id="scifi-row">
+            <div class="row-header">
+                <h2 class="row-title"><span class="accent-dot"></span> Sci-Fi &amp; Thriller</h2>
+                <button class="see-all-btn" data-row="scifi">See All <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="cards-scroll-wrap">
+                <button class="scroll-arrow scroll-left" data-target="scifi-cards"><i class="fas fa-chevron-left"></i></button>
+                <div class="cards-row" id="scifi-cards"></div>
+                <button class="scroll-arrow scroll-right" data-target="scifi-cards"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="content-row" id="horror-row">
+            <div class="row-header">
+                <h2 class="row-title"><span class="accent-dot" style="background:var(--accent2);box-shadow:0 0 8px var(--accent2);"></span> Horror &amp; Mystery</h2>
+                <button class="see-all-btn" data-row="horror">See All <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="cards-scroll-wrap">
+                <button class="scroll-arrow scroll-left" data-target="horror-cards"><i class="fas fa-chevron-left"></i></button>
+                <div class="cards-row" id="horror-cards"></div>
+                <button class="scroll-arrow scroll-right" data-target="horror-cards"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+
+            <div class="modal-hero">
+                <img src="" alt="" class="modal-poster" id="modal-poster">
+                <div class="modal-hero-info">
+                    <div class="modal-badges">
+                        <span class="modal-badge" id="modal-type"></span>
+                        <span class="modal-badge rated-badge" id="modal-rated"></span>
+                    </div>
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <p class="modal-meta" id="modal-meta"></p>
+                    <div class="modal-rating-wrap">
+                        <div class="modal-imdb">
+                            <i class="fas fa-star"></i>
+                            <span id="modal-imdb-score"></span>
+                            <small>/10 IMDb</small>
+                        </div>
+                        <div class="modal-stars" id="modal-stars"></div>
+                    </div>
+                    <p class="modal-plot" id="modal-plot"></p>
+                    <div class="modal-actions">
+                        <button class="btn-play modal-play-btn" id="modal-play-btn">
+                            <i class="fas fa-play"></i> Watch Trailer
+                        </button>
+                        <button class="btn-add modal-watchlist-btn" id="modal-watchlist-btn" title="Add to Watchlist">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-details">
+                <div class="modal-detail-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">Director</span>
+                        <span class="detail-value" id="modal-director">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Writer</span>
+                        <span class="detail-value" id="modal-writer">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Genre</span>
+                        <span class="detail-value" id="modal-genre">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Released</span>
+                        <span class="detail-value" id="modal-released">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Runtime</span>
+                        <span class="detail-value" id="modal-runtime">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Language</span>
+                        <span class="detail-value" id="modal-language">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Box Office</span>
+                        <span class="detail-value" id="modal-boxoffice">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Awards</span>
+                        <span class="detail-value" id="modal-awards">—</span>
+                    </div>
+                </div>
+
+                <div class="modal-cast-section">
+                    <h4 class="modal-section-title">Cast</h4>
+                    <p class="modal-cast" id="modal-actors">—</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-overlay" id="category-overlay">
+        <div class="category-modal">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="accent-dot"></span>
+                    <h2 class="category-title" id="category-modal-title">All Movies</h2>
+                    <span class="category-count-badge" id="category-modal-count">0 titles</span>
+                </div>
+                <button class="category-close-btn" id="category-close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="category-grid" id="category-modal-grid"></div>
+        </div>
+    </div>
+
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <span id="toast-msg">Added to Watchlist</span>
+    </div>
+
+    
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">MOVIESTAN</div>
+            <p class="footer-tagline">Your universe of stories.</p>
+            <p class="footer-credit">Powered by <a href="https://www.omdbapi.com" target="_blank" rel="noopener">OMDb API</a></p>
+        </div>
+    </footer>
+
+    <script src="movie.js"></script>
+</body>
+</html>
