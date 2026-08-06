@@ -1,30 +1,15 @@
-/**
- * MOVIESTAN — OMDB API Movie Website
- * Data API:   http://www.omdbapi.com/?apikey=
- * Poster API: http://img.omdbapi.com/?apikey=
- */
-
 'use strict';
-
-/* ============================================================
-   CONFIG
-   ============================================================ */
 const API_KEY  = 'Use Your API KEY';
 const API_BASE = `https://www.omdbapi.com/?apikey=${API_KEY}&`;
-// Note: img.omdbapi.com requires a Patreon subscription; we use the
-// Poster field from the main API as the primary poster URL.
 
-/* ============================================================
-   CURATED TITLE LISTS
-   ============================================================ */
 const HERO_TITLES = [
-    'tt5180504', // The Witcher
-    'tt0944947', // Game of Thrones
-    'tt3032476', // Better Call Saul
-    'tt2861424', // Rick and Morty
-    'tt4574334', // Stranger Things
-    'tt7366338', // Chernobyl
-    'tt1475582', // Sherlock
+    'tt5180504', 
+    'tt0944947',
+    'tt3032476',
+    'tt2861424',
+    'tt4574334', 
+    'tt7366338', 
+    'tt1475582', 
 ];
 
 const TRENDING_TITLES = [
@@ -33,7 +18,7 @@ const TRENDING_TITLES = [
     'Spider-Man No Way Home', 'The Dark Knight',
     'Guardians of the Galaxy', 'Black Panther', 'Thor Ragnarok',
     'Doctor Strange', 'Shang-Chi',
-    // Extra 15 Titles for See All Section (Total 30 Movies)
+   
     'Eternals', 'Deadpool', 'Avatar The Way of Water', 'Gladiator',
     'The Matrix', 'Fast X', 'Jurassic World', 'The Avengers',
     'Avengers Infinity War', 'Captain America Civil War', 'Iron Man',
@@ -46,7 +31,7 @@ const MOVIES_TITLES = [
     'The Irishman', '1917', 'Midsommar', 'Marriage Story', 'Jojo Rabbit',
     'Everything Everywhere All at Once', 'CODA', 'Belfast',
     'The Power of the Dog', 'Nomadland',
-    // Extra 15 Titles for See All Section (Total 30 Movies)
+  
     'Soul', 'Minari', 'The French Dispatch', 'Spencer', 'Last Night in Soho',
     'No Time to Die', 'Dune Part Two', 'Poor Things', 'The Zone of Interest',
     'Barbie', 'La La Land', 'Whiplash', 'The Wolf of Wall Street',
@@ -58,7 +43,7 @@ const TV_TITLES = [
     'Narcos', 'Ozark', 'Peaky Blinders', 'The Boys',
     'Squid Game', 'Succession', 'The Last of Us', 'House of the Dragon',
     'Andor', 'The Bear', 'The White Lotus',
-    // Extra 15 Titles for See All Section (Total 30 Shows)
+  
     'Severance', 'Yellowstone', 'Loki', 'WandaVision', 'Ted Lasso',
     'Euphoria', 'Invincible', 'Arcane', 'Stranger Things', 'Game of Thrones',
     'Sherlock', 'The Mandalorian', 'Dark', 'Fleabag', 'Mindhunter'
@@ -70,7 +55,7 @@ const ACTION_TITLES = [
     'Edge of Tomorrow', 'Extraction', 'Nobody',
     'John Wick Chapter 4', 'Bullet Train', 'The Gray Man',
     'Ambulance', 'Violent Night',
-    // Extra 15 Titles for See All Section (Total 30 Movies)
+  
     'RRR', 'Prey', 'Elvis', 'Top Gun Maverick', 'Casino Royale',
     'Die Hard', 'Speed', 'Logan', 'Free Guy', 'Skyfall',
     'Gladiator', 'Top Gun', 'Fast Five', 'The Bourne Identity', 'Taken'
@@ -81,7 +66,7 @@ const SCIFI_TITLES = [
     'The Martian', 'Gravity', 'Moon', 'District 9',
     'Looper', 'Source Code', 'Coherence', 'A Quiet Place',
     'Interstellar', 'Inception', 'The Matrix',
-    // Extra 15 Titles for See All Section (Total 30 Movies)
+  
     'Tenet', 'Minority Report', 'Children of Men', 'Oblivion',
     'TRON Legacy', 'Dune', 'Contact', 'Jurassic Park', '12 Monkeys',
     'Alien', 'Blade Runner', 'War of the Worlds', 'Pacific Rim', 'Avatar', 'Prometheus'
@@ -92,18 +77,16 @@ const HORROR_TITLES = [
     'The Witch', 'It Chapter Two', 'A Quiet Place', 'Nope',
     'Talk to Me', 'The Black Phone', 'Barbarian', 'Malignant',
     'The Conjuring', 'Insidious', 'Sinister',
-    // Extra 15 Titles for See All Section (Total 30 Movies)
+   
     'The Ring', 'Scream', 'Saw', 'It', 'The Shining',
     'Evil Dead Rise', 'Smile', 'The Exorcist', 'Resident Evil',
     'A Nightmare on Elm Street', 'Psycho', 'The Silence of the Lambs',
     'Sleepy Hollow', 'The Cabin in the Woods', 'Misery'
 ];
 
-/* ============================================================
-   AUTOCOMPLETE SUGGESTIONS POOL
-   ============================================================ */
+
 const SUGGESTIONS_POOL = [
-    // Movies
+  
     'Avengers Endgame', 'Avengers Infinity War', 'Avengers Age of Ultron',
     'Avatar', 'Avatar The Way of Water', 'Aladdin', 'Aquaman', 'Aliens', 'Alien',
     'Arrival', 'Annihilation', 'Atomic Blonde', 'Ambulance',
@@ -139,7 +122,7 @@ const SUGGESTIONS_POOL = [
     'WandaVision', 'White Lotus', 'Whiplash', 'The Wolf of Wall Street',
     'Yellowstone',
     '1917', '12 Monkeys',
-    // TV Shows
+  
     'Andor', 'Arcane',
     'Breaking Bad', 'Better Call Saul',
     'Chernobyl', 'The Crown', 'Cobra Kai',
@@ -157,18 +140,14 @@ const SUGGESTIONS_POOL = [
     'The Witcher',
 ];
 
-/* ============================================================
-   STATE
-   ============================================================ */
+
 let watchlist = JSON.parse(localStorage.getItem('ms_watchlist') || '[]');
 let currentHeroIndex = 0;
 let heroTitles = [];
 let searchDebounceTimer = null;
 let isSearchOpen = false;
 
-/* ============================================================
-   DOM REFERENCES
-   ============================================================ */
+
 const $ = id => document.getElementById(id);
 const $$ = sel => document.querySelector(sel);
 
@@ -193,9 +172,6 @@ const modalOverlay  = $('modal-overlay');
 const toast         = $('toast');
 const toastMsg      = $('toast-msg');
 
-/* ============================================================
-   LOADER ANIMATION
-   ============================================================ */
 function runLoader(onComplete) {
     let pct = 0;
     const interval = setInterval(() => {
@@ -213,9 +189,7 @@ function runLoader(onComplete) {
     }, 1600);
 }
 
-/* ============================================================
-   OMDB API HELPERS
-   ============================================================ */
+
 async function fetchByImdbId(imdbId) {
     try {
         const url = `${API_BASE}i=${imdbId}&plot=full`;
@@ -228,13 +202,13 @@ async function fetchByImdbId(imdbId) {
 async function fetchByTitle(title, type = '') {
     try {
         const typeParam = type ? `&type=${type}` : '';
-        // 1. Try exact title lookup with type
+        
         let url = `${API_BASE}t=${encodeURIComponent(title)}&plot=short${typeParam}`;
         let res = await fetch(url);
         let data = await res.json();
         if (data.Response === 'True') return data;
 
-        // 2. Try exact title lookup without type parameter
+       
         if (typeParam) {
             url = `${API_BASE}t=${encodeURIComponent(title)}&plot=short`;
             res = await fetch(url);
@@ -242,7 +216,7 @@ async function fetchByTitle(title, type = '') {
             if (data.Response === 'True') return data;
         }
 
-        // 3. Fallback to OMDB Search API (s=title)
+      
         url = `${API_BASE}s=${encodeURIComponent(title)}${typeParam}`;
         res = await fetch(url);
         data = await res.json();
@@ -267,9 +241,7 @@ async function fetchFullDetails(imdbId) {
     return fetchByImdbId(imdbId);
 }
 
-/* ============================================================
-   STAR RATING GENERATOR
-   ============================================================ */
+
 function buildStars(rating, max = 10, count = 5) {
     const filled = Math.round((rating / max) * count);
     let html = '';
@@ -279,18 +251,14 @@ function buildStars(rating, max = 10, count = 5) {
     return html;
 }
 
-/* ============================================================
-   POSTER URL HELPER
-   ============================================================ */
+
 function getPoster(data) {
     if (data.Poster && data.Poster !== 'N/A') return data.Poster;
     // Fallback: img.omdbapi.com (may require Patreon)
     return `https://img.omdbapi.com/?apikey=${API_KEY}&i=${data.imdbID}`;
 }
 
-/* ============================================================
-   HERO SECTION
-   ============================================================ */
+
 async function loadHeroTitles() {
     const promises = HERO_TITLES.map(id => fetchByImdbId(id));
     const results = await Promise.all(promises);
@@ -304,10 +272,9 @@ function renderHero(data) {
 
     const poster = getPoster(data);
 
-    // Clear bg (just a subtle dark radial gradient now, set in CSS)
+    
     heroBg.style.backgroundImage = 'none';
 
-    // Full-height right-side poster — fade in smoothly
     heroImg.style.opacity = '0';
     heroImg.onerror = () => { heroImg.style.opacity = '0'; };
     heroImg.onload  = () => { heroImg.style.opacity = '1'; };
@@ -342,9 +309,7 @@ function startHeroRotation() {
     }, 8000);
 }
 
-/* ============================================================
-   MOVIE CARDS
-   ============================================================ */
+
 function createSkeletonCards(count, containerId) {
     const container = $(containerId);
     if (!container) return;
@@ -403,15 +368,13 @@ async function loadRow(titles, containerId, type = '') {
     });
 }
 
-/* ============================================================
-   MODAL
-   ============================================================ */
+
 async function openModal(imdbId) {
     if (!imdbId) return;
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Prefill loading state
+    
     $('modal-title').textContent = 'Loading…';
     $('modal-poster').src = '';
     $('modal-plot').textContent = '';
@@ -458,9 +421,7 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
-/* ============================================================
-   WATCHLIST
-   ============================================================ */
+
 function toggleWatchlist(imdbId, title) {
     const idx = watchlist.indexOf(imdbId);
     if (idx === -1) {
@@ -473,9 +434,7 @@ function toggleWatchlist(imdbId, title) {
     localStorage.setItem('ms_watchlist', JSON.stringify(watchlist));
 }
 
-/* ============================================================
-   TOAST
-   ============================================================ */
+
 let toastTimer = null;
 function showToast(msg) {
     toastMsg.textContent = msg;
@@ -484,37 +443,32 @@ function showToast(msg) {
     toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
-/* ============================================================
-   YOUTUBE TRAILER
-   ============================================================ */
+
 function openYouTubeTrailer(movieTitle) {
     const query = encodeURIComponent(movieTitle + ' trailer');
     const url = `https://www.youtube.com/results?search_query=${query}`;
     window.open(url, '_blank', 'noopener,noreferrer');
 }
 
-/* ============================================================
-   SEARCH — AUTOCOMPLETE SUGGESTIONS
-   ============================================================ */
+
 let suggestionsEl = null;
 
 function buildSuggestionsEl() {
     suggestionsEl = document.createElement('div');
     suggestionsEl.id = 'search-suggestions';
     suggestionsEl.className = 'search-suggestions';
-    // Insert right after the search-wrap div
+  
     const searchWrap = document.querySelector('.search-wrap');
     searchWrap.parentNode.insertBefore(suggestionsEl, searchWrap.nextSibling);
 
-    // Prevent input blur when clicking inside suggestions box
     suggestionsEl.addEventListener('mousedown', e => {
         e.preventDefault();
         e.stopPropagation();
     });
 
-    // Handle suggestion item selection on click
+ 
     suggestionsEl.addEventListener('click', e => {
-        e.stopPropagation(); // Stop click from reaching searchOverlay (which closes search)
+        e.stopPropagation(); 
         const item = e.target.closest('.suggestion-item');
         if (!item) return;
         const title = item.dataset.title;
@@ -533,7 +487,7 @@ function showSuggestions(query) {
     const matches = SUGGESTIONS_POOL
         .filter(title => title.toLowerCase().includes(q))
         .sort((a, b) => {
-            // Prioritize titles that START with the query
+            
             const aStart = a.toLowerCase().startsWith(q) ? 0 : 1;
             const bStart = b.toLowerCase().startsWith(q) ? 0 : 1;
             return aStart - bStart || a.localeCompare(b);
@@ -601,9 +555,7 @@ async function performSearch(query) {
     });
 }
 
-/* ============================================================
-   SEE ALL CATEGORY MODAL
-   ============================================================ */
+
 const categoryOverlay    = $('category-overlay');
 const categoryModalTitle = $('category-modal-title');
 const categoryModalCount = $('category-modal-count');
@@ -629,7 +581,7 @@ async function openCategoryModal(categoryKey) {
     categoryOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Render skeleton cards first
+ 
     categoryModalGrid.innerHTML = Array(category.titles.length).fill('').map(() => `
         <div class="card-skeleton">
             <div class="skeleton-poster"></div>
@@ -646,7 +598,7 @@ async function openCategoryModal(categoryKey) {
     categoryModalCount.textContent = `${valid.length} Titles (${extraCount} Extra Movies)`;
 
     valid.forEach((data, index) => {
-        // First 10 titles are displayed on the home page; index >= 10 are extra movies!
+      
         const isExtra = index >= 10;
         categoryModalGrid.appendChild(createMovieCard(data, false, isExtra));
     });
@@ -674,9 +626,7 @@ function setupSeeAllButtons() {
     }
 }
 
-/* ============================================================
-   SCROLL ARROWS
-   ============================================================ */
+
 function setupScrollArrows() {
     document.querySelectorAll('.scroll-arrow').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -688,9 +638,7 @@ function setupScrollArrows() {
     });
 }
 
-/* ============================================================
-   NAVBAR SCROLL BEHAVIOUR
-   ============================================================ */
+
 function setupNavbar() {
     const hero = $$('.hero');
     const heroH = hero ? hero.offsetHeight * 0.6 : 400;
@@ -705,9 +653,7 @@ function setupNavbar() {
     navbar.classList.add('transparent');
 }
 
-/* ============================================================
-   NAV LINKS (FILTER BEHAVIOUR)
-   ============================================================ */
+
 function setupNavLinks() {
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', e => {
@@ -726,9 +672,7 @@ function setupNavLinks() {
     });
 }
 
-/* ============================================================
-   KEYBOARD & ACCESSIBILITY
-   ============================================================ */
+
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
         if (categoryOverlay && categoryOverlay.classList.contains('active')) closeCategoryModal();
@@ -741,34 +685,31 @@ document.addEventListener('keydown', e => {
     }
 });
 
-/* ============================================================
-   EVENT LISTENERS
-   ============================================================ */
-// Search toggle
+
 $('search-toggle-btn').addEventListener('click', openSearch);
 $('search-close-btn').addEventListener('click', closeSearch);
 
-// Search overlay click-outside
+
 searchOverlay.addEventListener('click', e => {
     if (e.target === searchOverlay) closeSearch();
 });
 
-// Search input — instant suggestions + debounced API search
+
 searchInput.addEventListener('input', e => {
     const val = e.target.value;
     searchClear.classList.toggle('visible', val.length > 0);
-    // Instant local suggestions
+    
     showSuggestions(val);
-    // Clear stale results immediately so no "no results" flash
+    
     searchGrid.innerHTML = '';
-    // Only trigger API search if at least 3 characters typed
+  
     clearTimeout(searchDebounceTimer);
     if (val.trim().length < 3) {
         if (!val.trim()) searchHint.style.display = 'flex';
         return;
     }
     searchHint.style.display = 'none';
-    // Debounced OMDB API search — fires after 500ms of inactivity
+  
     searchDebounceTimer = setTimeout(() => performSearch(val), 500);
 });
 
@@ -780,7 +721,7 @@ searchInput.addEventListener('focus', e => {
     if (e.target.value.trim()) showSuggestions(e.target.value);
 });
 
-// Keyboard navigation in suggestions
+
 searchInput.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
         e.preventDefault();
@@ -823,21 +764,19 @@ searchClear.addEventListener('click', () => {
     searchInput.focus();
 });
 
-// Modal close
+
 $('modal-close').addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', e => {
     if (e.target === modalOverlay) closeModal();
 });
 
-// Logo → scroll to top
+
 $('logo-home-btn').addEventListener('click', e => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-/* ============================================================
-   INIT
-   ============================================================ */
+
 async function init() {
     setupNavbar();
     setupNavLinks();
@@ -845,7 +784,7 @@ async function init() {
     setupSeeAllButtons();
     buildSuggestionsEl();
 
-    // Load 10 movies for each home page row (30 total movies in 'See All' section)
+  
     await Promise.all([
         loadHeroTitles(),
         loadRow(TRENDING_TITLES.slice(0, 10), 'trending-cards'),
