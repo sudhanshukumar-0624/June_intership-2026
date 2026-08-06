@@ -9,7 +9,7 @@
 /* ============================================================
    CONFIG
    ============================================================ */
-const API_KEY  = '';
+const API_KEY  = 'Use Your API KEY';
 const API_BASE = `https://www.omdbapi.com/?apikey=${API_KEY}&`;
 // Note: img.omdbapi.com requires a Patreon subscription; we use the
 // Poster field from the main API as the primary poster URL.
