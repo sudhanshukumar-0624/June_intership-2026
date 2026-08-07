@@ -33,7 +33,7 @@ img { display: block; max-width: 100%; }
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 29px;
+    margin-bottom: 30px;
     animation: logoPulse 1.5s ease-in-out infinite;
 }
 @keyframes logoPulse {
