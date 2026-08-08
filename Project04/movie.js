@@ -418,7 +418,10 @@ async function openModal(imdbId) {
 
 function closeModal() {
     modalOverlay.classList.remove('active');
+    const isCategoryOpen = categoryOverlay && categoryOverlay.classList.contains('active');
+    if (!isCategoryOpen && !isSearchOpen) {
     document.body.style.overflow = '';
+        }
 }
 
 
@@ -525,7 +528,11 @@ function openSearch() {
 function closeSearch() {
     isSearchOpen = false;
     searchOverlay.classList.remove('active');
+    const isCategoryOpen = categoryOverlay && categoryOverlay.classList.contains('active');
+    const isModalOpen = modalOverlay && modalOverlay.classList.contains('active');
+    if (!isCategoryOpen && !isModalOpen) {
     document.body.style.overflow = '';
+        }
     searchInput.value = '';
     searchGrid.innerHTML = '';
     searchHint.style.display = 'flex';
@@ -606,7 +613,10 @@ async function openCategoryModal(categoryKey) {
 
 function closeCategoryModal() {
     categoryOverlay.classList.remove('active');
+    const isModalOpen = modalOverlay && modalOverlay.classList.contains('active');
+    if (!isSearchOpen && !isModalOpen) {
     document.body.style.overflow = '';
+    }
 }
 
 function setupSeeAllButtons() {
