@@ -4,6 +4,14 @@ A premium, feature-rich movie and TV show discovery web application powered by t
 
 ---
 
+## 🖥️ Live Preview
+
+🔗 **Deployed URL:** [https://gaminghub-landingpage.netlify.app](https://gaminghub-landingpage.netlify.app)
+
+Or open `index.html` directly in any modern browser — no server required.
+
+---
+
 ## 🖥️ Overview
 
 **Moviestan** delivers a streaming-platform UI experience (similar to Netflix / Prime Video / Disney+). Users can explore curated rows of movies and series, view rich detailed metadata (ratings, plot, cast, director, box office), search in real-time with autocomplete suggestions, view full category collections with 30 titles each in a "See All" overlay, and manage their personal Watchlist.
