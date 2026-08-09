@@ -6,7 +6,7 @@ A premium, feature-rich movie and TV show discovery web application powered by t
 
 ## 🖥️ Live Preview
 
-🔗 **Deployed URL:** (https://movie-search-04.netlify.app/)
+🔗 **Deployed URL:** [https://movie-search-04.netlify.app/](https://movie-search-04.netlify.app/)
 
 Or open `index.html` directly in any modern browser — no server required.
 
