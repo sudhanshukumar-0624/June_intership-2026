@@ -6,7 +6,7 @@ A premium, feature-rich movie and TV show discovery web application powered by t
 
 ## 🖥️ Live Preview
 
-🔗 **Deployed URL:** [https://movie-search-04.netlify.app](https://movie-search-04.netlify.app)dfsa
+🔗 **Deployed URL:** [https://movie-search-04.netlify.app](https://movie-search-04.netlify.app)
 
 Or open `index.html` directly in any modern browser — no server required.
 
@@ -22,10 +22,10 @@ Or open `index.html` directly in any modern browser — no server required.
 
 ```
 Project04/
-├── index.html      # Main HTML structure (Navbar, Hero, Rows, Detail Modal, Category Grid, Search Overlay)
-├── style.css       # Full styling system (Dark glassmorphism theme, smooth animations, layout, responsive design)
-├── movie.js        # Core JavaScript logic (OMDb API integration, live search, autocomplete pool, modals, watchlist)
-└── README.md       # Project documentation
+├── index.html      # Main HTML structure (Navbar, Hero, Rows, Detail Modal, Category Grid, Search Overlay).
+├── style.css       # Full styling system (Dark glassmorphism theme, smooth animations, layout, responsive design).
+├── movie.js        # Core JavaScript logic (OMDb API integration, live search, autocomplete pool, modals, watchlist).
+└── README.md       # Project documentation.
 ```
 
 ---
