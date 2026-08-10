@@ -18,11 +18,11 @@ Open `index.html` in any modern browser (Chrome recommended for Geolocation).
 
 ```
 Project03/
-├── index.html          # Main HTML structure
-├── styles.css          # Glassmorphism UI styling
-├── web.js              # All JavaScript logic & API calls
+├── index.html          # Main HTML structure.
+├── styles.css          # Glassmorphism UI styling.
+├── web.js              # All JavaScript logic & API calls.
 └── assets/
-    └── weather_dashboard_bg.png   # Background image
+    └── weather_dashboard_bg.png   # Background image.
 ```
 
 ---
