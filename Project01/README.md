@@ -1,16 +1,4 @@
-# 🧑‍💻 Project 01 — Personal Portfolio Website
 
-A clean, modern personal portfolio website for **Sudhanshu Kumar**, a Computer Science & Engineering student at OP Jindal University. Built with pure HTML and CSS during a web development internship at UNLOX.
-
----
-
-## 🖥️ Live Preview
-
-🔗 **Deployed URL:** [https://sudhanshu-portfolio-0624.netlify.app](https://sudhanshu-portfolio-0624.netlify.app)
-
-Or open `index.html` directly in any browser.
-
----
 
 ## 📁 Project Structure
 
