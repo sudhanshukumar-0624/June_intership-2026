@@ -4,7 +4,7 @@ A beautiful, real-time weather dashboard called **WeatherWise** that fetches liv
 
 ---
 
-## 🖥️ Live Preview
+## 🖥️ Live Preview:
 
 🔗 **Deployed URL:** [https://weather-dashboard-006.netlify.app](https://weather-dashboard-006.netlify.app)
 
@@ -14,7 +14,7 @@ Open `index.html` in any modern browser (Chrome recommended for Geolocation).
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Structure:
 
 ```
 Project03/
@@ -27,7 +27,7 @@ Project03/
 
 ---
 
-## ✨ Features
+## ✨ Features:
 
 - **City Search** — Type any city name and get instant weather data
 - **GPS / Geolocation** — One-click button to detect your current location
@@ -41,7 +41,7 @@ Project03/
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack:
 
 | Technology | Purpose |
 |---|---|
@@ -54,7 +54,7 @@ Project03/
 
 ---
 
-## 🌐 API Used
+## 🌐 API Used:
 
 **OpenWeatherMap** — [https://openweathermap.org/](https://openweathermap.org/)
 
@@ -69,7 +69,7 @@ Project03/
 
 ---
 
-## 🎨 Design Highlights
+## 🎨 Design Highlights:
 
 - Frosted glassmorphism card UI
 - Full-screen atmospheric background image
@@ -79,7 +79,7 @@ Project03/
 
 ---
 
-## 🚀 How to Run
+## 🚀 How to Run:
 
 1. Clone or download the `Project03` folder
 2. Open `index.html` in **Google Chrome** or any modern browser
@@ -88,7 +88,7 @@ Project03/
 
 ---
 
-## 📌 UI Sections
+## 📌 UI Sections:
 
 | Component | Description |
 |---|---|
@@ -98,7 +98,7 @@ Project03/
 
 ---
 
-## ⚙️ Configuration
+## ⚙️ Configuration:
 
 To use your own API key, open `web.js` and replace line 2:
 
@@ -111,7 +111,7 @@ Get a free key at: [https://home.openweathermap.org/users/sign_up](https://home.
 
 ---
 
-## 🔒 Known Limitations
+## 🔒 Known Limitations:
 
 - Geolocation requires HTTPS or `localhost` in some browsers
 - Free OpenWeatherMap plan limits to 1,000 calls/day
@@ -119,7 +119,7 @@ Get a free key at: [https://home.openweathermap.org/users/sign_up](https://home.
 
 ---
 
-## 👨‍💻 Developer
+## 👨‍💻 Developer:
 
 **Sudhanshu Kumar**  
 B.Tech Computer Science & Engineering  
