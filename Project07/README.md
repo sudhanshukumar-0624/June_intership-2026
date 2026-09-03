@@ -170,3 +170,10 @@ vercel
 Or connect your GitHub repository directly to [vercel.com](https://vercel.com) for automatic deployments on every push.
 
 ---
+## 📄 License
+
+This project is built as part of a **Web Development Internship**.
+
+---
+
+> Made with ❤️ and 🔥 by SoleFire
