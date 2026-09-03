@@ -66,3 +66,38 @@ solefire/
 ├── vite.config.js
 └── package.json
 ```
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js `>=18.x`
+- npm `>=9.x`
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/solefire.git
+cd solefire
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start local development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run Oxlint for code quality checks |
+
+---
