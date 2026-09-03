@@ -101,3 +101,72 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 | `npm run lint` | Run Oxlint for code quality checks |
 
 ---
+## 🗺️ Pages & Routes
+
+| Route | Page | Description |
+|-------|------|-------------|
+| `/` | Home | Hero section, featured drops & full product grid |
+| `/category/:slug` | Category | Filtered product listings by category |
+| `/product/:id` | Product Detail | Full product info, size & color selection |
+| `/cart` | Cart | Shopping cart with quantity controls & order summary |
+| `/wishlist` | Wishlist | Saved items with move-to-cart option |
+
+### Category Slugs
+
+| Slug | Description |
+|------|-------------|
+| `all` | All products |
+| `running` | Running sneakers |
+| `basketball` | Basketball shoes |
+| `lifestyle` | Lifestyle & casual |
+| `jordan` | Jordan collection |
+| `airmax` | Nike Air Max |
+
+---
+
+## 🎨 Design Highlights
+
+- **Dark Theme** — Rich black/dark charcoal background with neon orange (`#FF5500`) accents
+- **Glassmorphism** — Frosted glass cards and overlay effects
+- **Micro-animations** — Hover effects, card transitions, and badge animations
+- **Modern Typography** — Google Fonts for a clean, premium feel
+- **Glowing Accents** — Subtle glowing highlights on interactive elements
+
+---
+
+## 🧠 State Management
+
+Redux Toolkit manages two global slices:
+
+### 🛒 Cart Slice (`cartSlice.js`)
+- Add items to cart
+- Remove items from cart
+- Update item quantities (`+` / `−`)
+- Automatic subtotal & total computation
+
+### ❤️ Wishlist Slice (`wishlistSlice.js`)
+- Toggle items into/out of wishlist
+- Move wishlist items directly to cart
+- Persistent badge counter in the header
+
+---
+
+## 🌐 Deployment
+
+This app is deployed on **Vercel**.
+
+**Live URL:** [https://solefire.vercel.app/](https://solefire.vercel.app/)
+
+To deploy your own instance:
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy
+vercel
+```
+
+Or connect your GitHub repository directly to [vercel.com](https://vercel.com) for automatic deployments on every push.
+
+---
